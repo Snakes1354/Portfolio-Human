@@ -1,0 +1,50 @@
+{ html
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+
+body {
+    background-color: #18131f;
+}
+
+h1 {
+    font-size: 40px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+h2 {
+    font-size: 40px;
+    color: rgb(164, 21, 109);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    font-size: 25px;
+    color: white;
+}
+
+button{
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    right: 300px;
+    top: 10px; 
+    margin-top: 20px;
+}
