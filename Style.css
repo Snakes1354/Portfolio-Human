@@ -160,27 +160,6 @@ p2 {
     margin-bottom: 10px;
 }
 
-.contact-container {
-    display: flex;
-    justify-content: center;
-    padding-top: 40px;
-}
-
-.contact-card {
-   display: flex;
-   align-items: center;
-   gap: 16px;
-   width: fit-content;
-   padding: 16px 28px;
-   background-color: #2a2438;
-   border-radius: 10px;
-   color: #fff;
-   text-decoration: none;
-   font-size: 1.25rem;
-   font-family: inherit;
-    
-}
-
 #email-icon {
     width: 32px;
     height: 32px;
@@ -209,6 +188,7 @@ p2 {
 
 .view-button:hover {
     box-shadow: 0 0 15px #d8a4ec;
+    transform: scale(1.1);
 }
 
 * {
@@ -343,6 +323,27 @@ pre code.hljs {
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
 }
 
+.contact-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.contact-card {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   width: fit-content;
+   padding: 16px 28px;
+   background-color: #2a2438;
+   border-radius: 10px;
+   color: #fff;
+   text-decoration: none;
+   font-size: 1.25rem;
+   font-family: inherit;
+    
+}
+
 .contact h1 {
     font-size: 55px;
     color: #c084fc;
@@ -350,4 +351,28 @@ pre code.hljs {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.about-me h1 {
+    font-size: 55px;
+    color: #c084fc;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-me-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    background-color: rgb(155, 39, 155);
+}
+
+.about-me p {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    align-items: center;
+    max-width: 720px;
 }
