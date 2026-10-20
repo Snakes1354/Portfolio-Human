@@ -322,26 +322,31 @@ pre code.hljs {
     border-radius: 30px;
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
 }
-
-.contact-container {
-    display: flex;
-    justify-content: center;
-    padding-top: 40px;
-}
-
 .contact-card {
    display: flex;
    align-items: center;
-   gap: 16px;
+   gap: 100px;
    width: fit-content;
    padding: 16px 28px;
    background-color: #2a2438;
    border-radius: 10px;
    color: #fff;
    text-decoration: none;
-   font-size: 1.25rem;
+   font-size: 3rem;
    font-family: inherit;
     
+}
+
+.contact-icon {
+    width: 128px;
+    height: 128px;
+    filter: invert(1);
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
 }
 
 .contact h1 {
