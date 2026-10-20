@@ -1,7 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <link rel="stylesheet" href="Style.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="Style.css">
+
     </head>
 
 <body>
@@ -13,17 +22,89 @@
 
         <a href="Page3.html"> <button3><b>Contact</b></button3> </a>
 
+<div class="showcase">
 
-         <div class="projects">
-         <div class="card">
-            <img src="images/UpgradeStats System preview.png" alt="UpgradeStats System preview">
-            <h3>UpgradeStats System</h3>
-            <a class="view-button" href="index.html">Back to projects ←</a>
+ <div class="window">
+        <div class="titlebar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
 
+            <span class="filename">UpgradeStats.cs</span>
+        </div>
+
+        <div class="code-area">
+            <pre><code id="code" class="language-csharp"> </code></pre>
         </div>
     </div>
 
+    <div class="explaination">
+        <h3>UpgradeStats System</h3>
+        <p> Discytions</p>
+        <a class="view-button" href="index.html">View Project ← </a>"
     </div>
+
+
+<script type="text/plain" id="source">
+using UnityEngine;
+using TMPro;
+
+public class UpgradeStat : MonoBehaviour
+{
+    public TMP_InputField AmountStats;
+
+    public ChestOpen chestOpen;
+
+    public void UpdateDamage()
+    {
+        if (int.TryParse(AmountStats.text, out int amount))
+        {
+            if (StatsUI.Points >= amount) // Checks to see if you have atleast one point
+            {
+                chestOpen.initialDamage += 1 * amount;
+                StatManager.Instance.damage += 1 * amount;// Goes to your statmanager script and adds + 1 to your speed variable
+                StatsUI.Points -= amount;
+            }
+        }
+    }
+
+    public void UpdateSpeed()
+    {
+        if (int.TryParse(AmountStats.text, out int amount))
+        {
+            if (StatsUI.Points >= amount) // Checks to see if you have atleast one point
+            {
+                chestOpen.initialSpeed += 1 * amount;
+                StatManager.Instance.MovementSpeed += 1 * amount;// Goes to your statmanager script and adds + 1 to your speed variable
+                StatsUI.Points -= amount;
+            }
+        }
+    }
+
+    public void UpdateHealth()
+    {
+        if (int.TryParse(AmountStats.text, out int amount))
+        {
+            if (StatsUI.Points >= amount) // Checks to see if you have atleast one point
+            {
+                PlayerStats.Instance.maxHealth += 10 * amount; // Goes to your statmanager script and adds + 10 to your maxhealth variable
+                PlayerStats.Instance.currentHealth += 10 * amount; // Goes to your statmanager script and adds + 10 to your currenthealth variable
+                chestOpen.initialHealth += 10 * amount;
+                PlayerStats.Instance.healthBar.SetSliderMax(PlayerStats.Instance.maxHealth); // Updates the slider max to make it so you can have more health
+                PlayerStats.Instance.healthBar.SetSlider(PlayerStats.Instance.currentHealth); // Updates the currenthealth variable from the playerstats script
+                StatsUI.Points -= amount;
+            }
+        }
+
+    }
+}
+</script>
+
+<script>
+    const code = document.getElementById('code');
+    code.textContent = document.getElementById('source').textContent.trim();
+    hljs.highlightElement(code);
+</script>
 </body>
 
 </html>

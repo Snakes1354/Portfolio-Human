@@ -5,6 +5,7 @@
 html {
     scroll-behavior: smooth;
     scrollbar-width: none;
+    background-color: #18131f;
 }
 
 body {
@@ -46,6 +47,14 @@ h3{
 }
 
 p {
+    font-size: 35px;
+    color: white;
+    margin-top: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+p2 {
     font-size: 35px;
     color: white;
     margin-top: auto;
@@ -152,6 +161,33 @@ button3 {
     margin-bottom: 10px;
 }
 
+.contact-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.contact-card {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   width: fit-content;
+   padding: 16px 28px;
+   background-color: #2a2438;
+   border-radius: 10px;
+   color: #fff;
+   text-decoration: none;
+   font-size: 1.25rem;
+   font-family: inherit;
+    
+}
+
+.contact-icon {
+    width: 32px;
+    height: 32px;
+    filter: invert(1);
+}
+
 .card h3 {
     color: white;
     font-size: 34px;
@@ -174,4 +210,136 @@ button3 {
 
 .view-button:hover {
     box-shadow: 0 0 15px #d8a4ec;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #0d0e10;
+    padding: 24px;
+}
+
+.window {
+    width: 100%;
+    max-width: 720px;
+    background-color: #17181c;
+    border: 1px solid #2c2e33;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    margin: 150px;
+}
+
+.titlebar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #1c1d22;
+    border-bottom: 1px solid #2c2e33;
+}
+
+.dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+}
+
+.red  { background: #ff5f57; }
+.yellow { background: #febc2e; }
+.green { background: #28c840; } 
+
+.filename {
+    margin-left: 12px;
+    font: 13px/1 "Segoe UI", system-ui, sans-serif;
+    color: #9da0a8;
+}
+
+.code-area {
+    max-height: 560px;
+    overflow: auto;
+    padding: 16px 14px;
+    scrollbar-color: #3a3d45 transparent;
+    scrollbar-width: thin;
+}
+
+pre { margin: 0; }
+
+pre code.hljs {
+    background: transparent;
+    padding: 0;
+    font: 14px/1.7 "JetBrains Mono", "Fira Code", Consolas, "Courier New", monospace;
+    white-space: pre-wrap;
+}
+
+.code-area::-webkit-scrollbar { width: 12px; }
+  .code-area::-webkit-scrollbar-track { background: transparent; }
+  .code-area::-webkit-scrollbar-thumb {
+    background: #3a3d45;
+    border-radius: 6px;
+    border: 3px solid #17181c;
+    background-color: #17181c;
+  }
+  .code-area::-webkit-scrollbar-thumb:hover { background: #50545e; }
+
+  .window {
+    width: 100%;
+    max-width: 720px;
+    background-color: #221b2b;
+    border: 1px solid #2c2e33;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+  }
+
+  .showcase .window {
+    flex: 3;
+    margin: 0;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .explaination {
+    flex: 2;
+    padding: 0 20px;
+    color: white;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.explaination h3 {
+    font-size: 52px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin: 0 0 10px;
+}
+
+.explaination p {
+    font-size: 24px;
+    line-height: 1.4;
+    text-align: left;
+    color: #d8cfe6;
+    margin: 0 0 20px;
+}
+
+.explaination .view-button {
+    font-size: 24px;
+    padding: 10px 24px;
+}
+
+.showcase {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: 1320px;
+    margin: 120px auto 0;
+    padding: 20px;
+    background-color: #221b2b;
+    border: 4px solid #b79ae0;
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
 }
