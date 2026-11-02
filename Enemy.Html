@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="Style.css">
+
+    </head>
+
+<body>
+
+    <header class="header">
+
+    <a href="Homepage.html" class="logo"><b>&lt;/&gt;</b></a>
+
+    <nav class="navbar">
+        <a href="Homepage.html#work">Work</a>
+        <a href="Homepage.html#contact">Contact</a>
+        <a href="Homepage.html#about">About Me</a>
+    </nav>     
+    </header>
+    </nav>
+
+
+<div class="showcase">
+
+ <div class="window">
+        <div class="titlebar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+
+            <span class="filename">UpgradeStats.cs</span>
+        </div>
+
+        <div class="code-area">
+            <pre><code id="code" class="language-csharp"> </code></pre>
+        </div>
+    </div>
+
+    <div class="explanation">
+        <h3>Enemy system</h3>
+        <p> This script is used to give my enemy animations and give my enemy health. Also it is used to make the enemy target the player. Moreover, it also tracks how many enemies you kill, and gives you exp when you kill them.</p>
+    </div>
+
+
+<script type="text/plain" id="source">
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.AI;
+
+public class Actor : MonoBehaviour
+{
+
+    // VARIABLES
+    [SerializeField] private float attackCD = 3f;
+    [SerializeField] private float attackRange = 1f;
+    [SerializeField] private float aggroRange = 4f;
+    [SerializeField] private int CurrentHealth = 2;
+    [SerializeField] private int MaxHealth = 3;
+    [SerializeField] private int ExpAmount;
+    public float DropChance = 1;
+
+    private float timePassed;
+    private float newDestinationCD = 0.5f;
+
+    [Header("Assign in inspector")]
+    public GameObject Chest;
+    public NavMeshAgent agent;
+    public Animator animator;
+    public GameObject player;
+    public FloatingHealthBar healthBar;
+
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>(); // Finds where the animator component is
+        agent = GetComponent<NavMeshAgent>(); // Finds where the agent component is
+        player = GameObject.FindWithTag("Player"); // Find where the gameobject player with the tag player is
+        healthBar.UpdateHealthBar(CurrentHealth, MaxHealth); // Updates the health bar at the start
+    }
+
+    private void Update()
+    {
+        animator.SetFloat("speed", agent.velocity.magnitude / agent.speed); // Enables the float speed in the animator controller
+
+        if(timePassed >= attackCD) // Checks if the cooldown is over
+        {
+            if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
+            {
+                animator.SetTrigger("attack"); // Changes the animaton to attack
+                timePassed = 0;
+            }
+        }
+        timePassed += Time.deltaTime;
+
+        if (newDestinationCD <= 0 && Vector3.Distance(player.transform.position, transform.position) <= aggroRange)
+        {
+            newDestinationCD = 0.5f;
+            agent.SetDestination(player.transform.position);
+        }
+        newDestinationCD -= Time.deltaTime;
+        //transform.LookAt(player.transform);
+    }
+
+
+    void Awake()
+    {
+        CurrentHealth = MaxHealth;
+        // Sets hp at the start.
+
+        healthBar = GetComponentInChildren<FloatingHealthBar>(); // Finds the health bar script
+    }
+}
+</script>
+
+<script>
+    const code = document.getElementById('code');
+    code.textContent = document.getElementById('source').textContent.trim();
+    hljs.highlightElement(code);
+</script>
+</body>
+
+</html>

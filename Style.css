@@ -336,6 +336,7 @@ pre code.hljs {
    font-size: 2rem;
    font-family: inherit;
    transition: 0.3s ease;
+   font-size: 36px;
     
 }
 
@@ -374,7 +375,7 @@ pre code.hljs {
     margin-top: 0;
 }
 .about-me {
-    margin-top: 60px;
+    margin-top: 80px;
 }
 
 .about-me-container {
@@ -392,9 +393,9 @@ pre code.hljs {
     padding: 24px 36px;
     background-color: #b897bd;
     color: #1a1020;
-    border-radius: 10px;
+    border-radius: 15px;
     text-align: left;
-    font-size: 28px;
+    font-size: 34px;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.35;
 }

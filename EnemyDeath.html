@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="Style.css">
+
+    </head>
+
+<body>
+
+    <header class="header">
+
+    <a href="Homepage.html" class="logo"><b>&lt;/&gt;</b></a>
+
+    <nav class="navbar">
+        <a href="Homepage.html#work">Work</a>
+        <a href="Homepage.html#contact">Contact</a>
+        <a href="Homepage.html#about">About Me</a>
+    </nav>     
+    </header>
+    </nav>
+
+
+<div class="showcase">
+
+ <div class="window">
+        <div class="titlebar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+
+            <span class="filename">UpgradeStats.cs</span>
+        </div>
+
+        <div class="code-area">
+            <pre><code id="code" class="language-csharp"> </code></pre>
+        </div>
+    </div>
+
+    <div class="explanation">
+        <h3>Enemy Death system</h3>
+        <p> This script is used to allow my enemy to die, when the enemy dies it also checks the variable drop chance and then takes the drop chance and if it hits the drop chance it summons a chest.</p>
+    </div>
+
+
+<script type="text/plain" id="source">
+public void TakeDamage(int amount)
+{
+    {
+        CurrentHealth -= amount;
+        // Makes it take damage.
+
+        healthBar.UpdateHealthBar(CurrentHealth, MaxHealth);
+
+        if(CurrentHealth <= 0)
+        {
+            Death();
+            ExpManager.Instance.AddExperience(ExpAmount);
+            // Call Death method when it hits 0 hp.
+        }
+    }
+
+    void Death()
+    {
+        KillManager.PrintEnemyCount();
+
+        if (Random.value <= DropChance)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position + Vector3.up * 2f, Vector3.down, out hit, 10f))
+            {
+                GameObject newchest = Instantiate(Chest, hit.point + Vector3.down * 1f, Quaternion.identity);
+                newchest.SetActive(true);
+            }
+            else
+            {
+                Instantiate(Chest, transform.position, Quaternion.identity);
+            }
+        }
+
+        Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, aggroRange);
+    }
+}
+</script>
+
+<script>
+    const code = document.getElementById('code');
+    code.textContent = document.getElementById('source').textContent.trim();
+    hljs.highlightElement(code);
+</script>
+</body>
+
+</html>

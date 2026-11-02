@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="Style.css">
+
+    </head>
+
+<body>
+
+    <header class="header">
+
+    <a href="Homepage.html" class="logo"><b>&lt;/&gt;</b></a>
+
+    <nav class="navbar">
+        <a href="Homepage.html#work">Work</a>
+        <a href="Homepage.html#contact">Contact</a>
+        <a href="Homepage.html#about">About Me</a>
+    </nav>     
+    </header>
+    </nav>
+
+
+<div class="showcase">
+
+ <div class="window">
+        <div class="titlebar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+
+            <span class="filename">UpgradeStats.cs</span>
+        </div>
+
+        <div class="code-area">
+            <pre><code id="code" class="language-csharp"> </code></pre>
+        </div>
+    </div>
+
+    <div class="explanation">
+        <h3>Blocker System</h3>
+        <p> In my game I used this to system to disable barriers and also set barriers behind the player so they can not run back after killing all the enemies.</p>
+    </div>
+
+
+<script type="text/plain" id="source">
+using UnityEngine;
+
+public class Blocker1 : MonoBehaviour
+{
+
+    public GameObject blocker1;
+    public GameObject Gate;
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if(!collision.CompareTag("Player")) return;
+        {
+            Gate.SetActive(false);
+            blocker1.SetActive(true);
+        }
+    }
+
+}
+</script>
+
+<script>
+    const code = document.getElementById('code');
+    code.textContent = document.getElementById('source').textContent.trim();
+    hljs.highlightElement(code);
+</script>
+</body>
+
+</html>

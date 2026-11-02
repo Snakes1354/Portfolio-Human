@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="Style.css">
+
+    </head>
+
+<body>
+
+    <header class="header">
+
+    <a href="Homepage.html" class="logo"><b>&lt;/&gt;</b></a>
+
+    <nav class="navbar">
+        <a href="Homepage.html#work">Work</a>
+        <a href="Homepage.html#contact">Contact</a>
+        <a href="Homepage.html#about">About Me</a>
+    </nav>     
+    </header>
+    </nav>
+
+
+<div class="showcase">
+
+ <div class="window">
+        <div class="titlebar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+
+            <span class="filename">UpgradeStats.cs</span>
+        </div>
+
+        <div class="code-area">
+            <pre><code id="code" class="language-csharp"> </code></pre>
+        </div>
+    </div>
+
+    <div class="explanation">
+        <h3>Tutorial system</h3>
+        <p> This script is used to start the tutorial enemy. You basicly have to beat this dummy and when you beat the dummy the blocker disappears and you are able to escape the first room. </p>
+    </div>
+
+
+<script type="text/plain" id="source">
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class Tutorial : MonoBehaviour
+{
+    //VARIABLES
+    [SerializeField] private int CurrentHealthTu = 2;
+    [SerializeField] private int MaxHealthTu = 3;
+
+    void Awake()
+    {
+        CurrentHealthTu = MaxHealthTu;
+        // Sets hp at the start.
+    }
+
+    public void TakeDamage(int amountTu)
+    {
+        CurrentHealthTu -= amountTu;
+        // Makes it take damage.
+
+        if(CurrentHealthTu <= 0)
+        {
+            Death();
+            KillManager.PrintEnemyCount();
+            // Call Death method when it hits 0 hp.
+        }
+    }
+
+    void Death()
+    {
+        Destroy(gameObject);
+        // Death function
+        // Temporary: Destroy Object
+    }
+}
+</script>
+
+<script>
+    const code = document.getElementById('code');
+    code.textContent = document.getElementById('source').textContent.trim();
+    hljs.highlightElement(code);
+</script>
+</body>
+
+</html>
